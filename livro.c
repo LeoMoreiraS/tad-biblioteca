@@ -33,8 +33,7 @@ void readBook(Book *book){
     scanf("%d",&book->editionNumber);
     printf("Digite o numero total de livros\n\t");
     scanf("%d",&book->totalBooks);
-    printf("Digite o numero de livros emprestados\n\t");
-    scanf("%d",&book->borrowedBooks);
+    book->borrowedBooks = 0;
 
 
 };

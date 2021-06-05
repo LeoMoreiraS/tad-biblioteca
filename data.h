@@ -16,5 +16,8 @@ void readDate(Date *date);
 
 void printDate(Date date);
 
+void dateOfReturn(Date borrowDate, Date *returnDate);
+
+int leapYearCalc(Date date);
 
 #endif 
