@@ -1,3 +1,3 @@
 all:
-	gcc main.c data.c livro.c usuario.c emprestimo.c interface.c
+	gcc src\main.c src\data.c src\livro.c src\usuario.c src\emprestimo.c src\interface.c
 	./a.exe
