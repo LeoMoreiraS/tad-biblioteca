@@ -1,70 +1,10 @@
+#include "livro.h"
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef struct date{
-    int day;
-    int month;
-    int year;
-}Date;
-
-typedef struct book{
-    char code[15];
-    char title[50];
-    char publisher[50];
-    char placePublish[50];
-    Date datePublish;
-    char firstAuthor[50];
-    char secondAuthor[50];
-    int editionNumber;
-    int totalBooks;
-    int borrowedBooks;
-    int remainingBooks;
-}Book;
 
 int restriction(Book book){
     if(book.totalBooks*0.1 <= (book.totalBooks - book.borrowedBooks)) return 1;
     else return 0;
-}
-
-void readDate(Date *date){
-
-    printf("\tDigite o dia\n\t");
-    int toogle1=0;
-    do{
-        if(toogle1==1)printf("\tDigite um dia valido\n\t");
-        scanf("%d",&date->day);
-        toogle1=1;
-    }while(date->day<=0||date->day>=32);
-    
-    printf("\tDigite o numero do mes\n\t");
-    int toogle2=0;
-    do{
-        if(toogle2==1)printf("\tDigite um mes valido\n\t");
-        scanf("%d",&date->month);
-        toogle2=1;
-    }while(date->month<=0||date->month>=13);
-    
-
-    printf("\tDigite o ano\n\t");
-    int toogle3=0;
-    do{
-        if(toogle3==1)printf("\tDigite um ano valido no formato YYYY\n\t");
-        scanf("%d",&date->year);
-        toogle3=1;
-    }while(date->year<=999||date->year>=2050);
-    
-
-}
-void printDate(Date date){
-    if(date.day>=10 && date.month>=10){
-        printf("%d/%d/%d\n",date.day,date.month,date.year);
-    }else if(date.day<10&&date.month<10){
-        printf("0%d/0%d/%d\n",date.day,date.month,date.year);
-    }else if(date.day<10&&date.month>=10){
-        printf("0%d/%d/%d\n",date.day,date.month,date.year);
-    }else{
-        printf("%d/0%d/%d\n",date.day,date.month,date.year);
-    }
 }
 
 void readBook(Book *book){
@@ -115,10 +55,3 @@ void printBook(Book book){
  
 }
 
-int main(){
-    Book book;
-    readBook(&book);
-    printBook(book);
-    
-    return 0;
-}
