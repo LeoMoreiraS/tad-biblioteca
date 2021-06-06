@@ -1,6 +1,4 @@
 #include "..\headers\livro.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 int restriction(Book book){
     if(book.totalBooks*0.1 <= (book.totalBooks - book.borrowedBooks)) return 1;
@@ -11,7 +9,7 @@ void readBook(Book *book){
     
     printf("Digite o ISBN do livro\n\t");
     fflush(stdin);
-    fgets(book->code,15,stdin);
+    fgets(book->isbn,15,stdin);
     printf("Digite o titulo do livro\n\t");
     fflush(stdin);
     fgets(book->title,50,stdin);
@@ -40,6 +38,7 @@ void readBook(Book *book){
 
 void printBook(Book book){
     printf("Titulo:\n\t%s",book.title);
+    printf("ISBN\n\t%s",book.isbn);
     printf("Primeiro autor:\n\t%s",book.firstAuthor);
     printf("Segundo autor:\n\t%s",book.secondAuthor);
     printf("Dados da publicacao:\n");

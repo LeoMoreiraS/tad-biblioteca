@@ -18,7 +18,7 @@ typedef struct address{
 
 
 typedef struct user{
-    char cpf[15];
+    char cpf[16];
     char name[25];
     char lastName[50];
     char rg[15];

@@ -6,7 +6,7 @@ void readUser(User *user){
     
     printf("Digite o cpf do usuario(xxx.xxx.xxx-xx)\n\t");
     fflush(stdin);
-    fgets(user->cpf,15,stdin);
+    fgets(user->cpf,16,stdin);
     printf("Digite o nome do usuario\n\t");
     fflush(stdin);
     fgets(user->name,25,stdin);

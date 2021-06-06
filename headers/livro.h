@@ -8,7 +8,7 @@
 
 
 typedef struct book{
-    char code[15];
+    char isbn[15];
     char title[50];
     char publisher[50];
     char placePublish[50];
