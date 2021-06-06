@@ -20,4 +20,6 @@ void dateOfReturn(Date borrowDate, Date *returnDate);
 
 int leapYearCalc(Date date);
 
+int fineCalc(Date returnDate,Date deliveryDate);
+
 #endif 

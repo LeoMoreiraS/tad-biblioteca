@@ -131,3 +131,138 @@ int leapYearCalc(Date date){
         return 0; //nao divisivel 4
     }
 }
+
+int fineCalc(Date returnDate,Date deliveryDate){
+    int fine = 0;
+    if(returnDate.year==deliveryDate.year){
+        if(returnDate.month==deliveryDate.month){//mesmo ano e mes
+            fine = 2*(deliveryDate.day - returnDate.day);
+            if(fine>=0)return fine;
+            else return 0;
+        }else{//mesmo ano mes diferente
+            if(returnDate.month<deliveryDate.month){
+                int monthIterator = returnDate.month;
+                int first = 0;
+                while(monthIterator!=deliveryDate.month){
+                    if(first==0){//primeira iteracao calcula os dias a partir do dia de entrega ate o final do mes
+                        if(monthIterator == 1 || monthIterator == 3 || monthIterator == 5 || monthIterator == 7 || monthIterator == 8 || monthIterator == 10){//calcula multa meses 31 dias
+                            fine += (31 - returnDate.day)*2;
+                            monthIterator++;
+                        }else if(monthIterator == 4 || monthIterator == 6 || monthIterator == 9 || monthIterator == 11){//calcula multa meses 30 dias
+                            fine += (30 - returnDate.day)*2;
+                            monthIterator++;
+                        }else{//multa fevereiro
+                            if(leapYearCalc(returnDate)){
+                                fine += (29 - returnDate.day)*2;
+                                monthIterator++;
+                            }else{
+                                fine += (29 - returnDate.day)*2;
+                                monthIterator++;
+                            }
+                        }
+                        first = 1;
+                    }else{//o mes e diferente e nao esta no mesmo mes da data de entrega entao ele nao entregou o mes inteiro
+                        if(monthIterator == 1 || monthIterator == 3 || monthIterator == 5 || monthIterator == 7 || monthIterator == 8 || monthIterator == 10){//calcula multa meses 31 dias
+                            fine += (31)*2;
+                            monthIterator++;
+                        }else if(monthIterator == 4 || monthIterator == 6 || monthIterator == 9 || monthIterator == 11){//calcula multa meses 30 dias
+                            fine += (30)*2;
+                            monthIterator++;
+                        }else{
+                            if(leapYearCalc(returnDate)){
+                                fine += (29)*2;
+                                monthIterator++;
+                            }else{
+                                fine += (29)*2;
+                                monthIterator++;
+                            }
+                        }
+                    }
+                }
+                //meses iguais logo a multa desse mes é do dia 1 até o dia de devolucao
+                fine += 2*deliveryDate.day; 
+                return fine;
+            }else{// o mes de entrega e menor que o de devolucao
+                return 0;
+            }
+        }
+    }else{//ano diferente
+        //primeiro iterar somando os meses até igualar os anos
+        
+        if(returnDate.year>deliveryDate.year){//devolveu no ano anterior da data de entrega
+            return 0;
+        }else{
+            int yearIterator = returnDate.year;
+            int monthIterator = returnDate.month;
+            int first = 0;
+            while(yearIterator!=deliveryDate.year){//enquanto os anos forem diferentes   
+                //primeira iteracao para pegar os dias antes da data de entrega
+                if(first==0){
+                    if(monthIterator==12){//multa dezembro vira ano
+                        fine += (31 - returnDate.day)*2;
+                        monthIterator = 1;
+                        yearIterator++;
+                    }else if(monthIterator == 1 || monthIterator == 3 || monthIterator == 5 || monthIterator == 7 || monthIterator == 8 || monthIterator == 10){//meses 31 dias
+                        fine += (31 - returnDate.day)*2;
+                        monthIterator++;
+                    }else if(monthIterator == 4 || monthIterator == 6 || monthIterator == 9 || monthIterator == 11){//meses 30 dias
+                        fine += (30 - returnDate.day)*2;
+                        monthIterator++;
+                    }else{//fevereiro
+                            if(leapYearCalc(returnDate)){//ano bissexto
+                                fine += (29 - returnDate.day)*2;
+                                monthIterator++;
+                            }else{
+                                fine += (29 - returnDate.day)*2;
+                                monthIterator++;
+                            }
+                    }
+                }else{
+                    if(monthIterator==12){//multa dezembro vira ano
+                        fine += 31*2;
+                        monthIterator = 1;
+                        yearIterator++;
+                    }else if(monthIterator == 1 || monthIterator == 3 || monthIterator == 5 || monthIterator == 7 || monthIterator == 8 || monthIterator == 10){//meses 31 dias
+                        fine += 31*2;
+                        monthIterator++;
+                    }else if(monthIterator == 4 || monthIterator == 6 || monthIterator == 9 || monthIterator == 11){//meses 30 dias
+                        fine += 30*2;
+                        monthIterator++;
+                    }else{//fevereiro
+                            if(leapYearCalc(returnDate)){//ano bissexto
+                                fine += 29*2;
+                                monthIterator++;
+                            }else{
+                                fine += 28*2;
+                                monthIterator++;
+                            }
+                    }
+
+                }
+            }
+            //anos iguais agora iterar ate os meses ficarem iguais
+            while(monthIterator!=deliveryDate.month){
+                    //o mes e diferente e nao esta no mesmo mes da data de entrega entao ele nao entregou o mes inteiro
+                        if(monthIterator == 1 || monthIterator == 3 || monthIterator == 5 || monthIterator == 7 || monthIterator == 8 || monthIterator == 10){//calcula multa meses 31 dias
+                            fine += (31)*2;
+                            monthIterator++;
+                        }else if(monthIterator == 4 || monthIterator == 6 || monthIterator == 9 || monthIterator == 11){//calcula multa meses 30 dias
+                            fine += (30)*2;
+                            monthIterator++;
+                        }else{
+                            if(leapYearCalc(returnDate)){
+                                fine += (29)*2;
+                                monthIterator++;
+                            }else{
+                                fine += (29)*2;
+                                monthIterator++;
+                            }
+                        }
+                }
+                //meses iguais logo a multa desse mes é do dia 1 até o dia de devolucao
+                fine += 2*deliveryDate.day; 
+            return fine;
+        }
+        
+    }
+}
