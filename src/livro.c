@@ -28,8 +28,10 @@ void readBook(Book *book){
     fflush(stdin);
     fgets(book->secondAuthor,50,stdin);
     printf("Digite o numero da edicao do livro\n\t");
+    fflush(stdin);
     scanf("%d",&book->editionNumber);
     printf("Digite o numero total de livros\n\t");
+    fflush(stdin);
     scanf("%d",&book->totalBooks);
     book->borrowedBooks = 0;
 

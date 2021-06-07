@@ -6,6 +6,7 @@ void readDate(Date *date){
     int toggle=0;
     do{
         if(toggle==1)printf("\tDigite um dia valido\n\t");
+        fflush(stdin);
         scanf("%d",&date->day);
         toggle=1;
     }while(date->day<=0||date->day>=32);
@@ -14,6 +15,7 @@ void readDate(Date *date){
     toggle=0;
     do{
         if(toggle==1)printf("\tDigite um mes valido\n\t");
+        fflush(stdin);
         scanf("%d",&date->month);
         toggle=1;
     }while(date->month<=0||date->month>=13);
@@ -23,6 +25,7 @@ void readDate(Date *date){
     toggle=0;
     do{
         if(toggle==1)printf("\tDigite um ano valido no formato YYYY\n\t");
+        fflush(stdin);
         scanf("%d",&date->year);
         toggle=1;
     }while(date->year<=999||date->year>=2050);

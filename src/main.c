@@ -6,15 +6,15 @@
 int main(){
     //testes
     
+    //teste leitura e impressao usuario
+    User user;
+    readUser(&user);
+    printUser(user);
     /*
     //teste leitura e impressao livro
     Book book;
     readBook(&book);
     printBook(book);
-    //teste leitura e impressao usuario
-    User user;
-    readUser(&user);
-    printUser(user);
     //teste geracao da data de entrega
     Date date;
     Date date2;
@@ -52,16 +52,17 @@ int main(){
    Borrow borrow;
    readBorrow(&borrow);
    printBorrow(borrow);
-   */
+   
   //testes de valor de multa
    Date date1;
    Date date2;
    date1.day = 10;
     date1.month = 12;
-    date1.year = 2000;
-    date2.day = 8;
-    date2.month = 1;
+    date1.year = 1999;
+    date2.day = 16;
+    date2.month = 11;
     date2.year = 2001;
     printf("%d\n",fineCalc(date1,date2));
+    */
     return 0;
 }

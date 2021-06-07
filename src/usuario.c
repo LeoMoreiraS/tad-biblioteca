@@ -23,6 +23,7 @@ void readUser(User *user){
     fflush(stdin);
     fgets(user->address.address,100,stdin);
     printf("\tNumero\n\t");
+    fflush(stdin);
     scanf("%d",&user->address.number);
     printf("\tBairro\n\t");
     fflush(stdin);
