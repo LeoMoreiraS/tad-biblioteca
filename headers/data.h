@@ -9,17 +9,17 @@ typedef struct date{
     int day;
     int month;
     int year;
-}Date;
+}TDate;
 
 
-void readDate(Date *date);
+void readDate(TDate *date);
 
-void printDate(Date date);
+void printDate(TDate date);
 
-void dateOfReturn(Date borrowDate, Date *returnDate);
+void dateOfReturn(TDate borrowDate, TDate *returnDate);
 
-int leapYearCalc(Date date);
+int leapYearCalc(TDate date);
 
-int fineCalc(Date returnDate,Date deliveryDate);
+int fineCalc(TDate returnDate,TDate deliveryDate);
 
 #endif 

@@ -14,7 +14,7 @@ typedef struct address{
     char city[50];
     char cep[15];
     
-}Address;
+}TAddress;
 
 
 typedef struct user{
@@ -22,13 +22,17 @@ typedef struct user{
     char name[25];
     char lastName[50];
     char rg[15];
-    Address address;
-    Date birthDate;
+    TAddress address;
+    TDate birthDate;
     int userType;
     char courseDep[50];
-}User;
+}TUser;
 
+typedef struct users{
+    TUser users[100];
+    int index;
+}TModuleUser;
 
-void readUser(User *user);
-void printUser(User user);
+void readUser(TUser *user);
+void printUser(TUser user);
 #endif 

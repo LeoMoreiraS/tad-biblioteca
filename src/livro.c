@@ -1,11 +1,11 @@
 #include "..\headers\livro.h"
 
-int restriction(Book book){
+int restriction(TBook book){
     if(book.totalBooks*0.1 <= (book.totalBooks - book.borrowedBooks)) return 1;
     else return 0;
 }
 
-void readBook(Book *book){
+int readBook(TBook *book){
     
     printf("Digite o ISBN do livro\n\t");
     fflush(stdin);
@@ -34,11 +34,11 @@ void readBook(Book *book){
     fflush(stdin);
     scanf("%d",&book->totalBooks);
     book->borrowedBooks = 0;
-
+    return 1;
 
 };
 
-void printBook(Book book){
+int printBook(TBook book){
     printf("Titulo:\n\t%s",book.title);
     printf("ISBN\n\t%s",book.isbn);
     printf("Primeiro autor:\n\t%s",book.firstAuthor);
@@ -52,6 +52,32 @@ void printBook(Book book){
     printf("Numero de livros emprestados:\n\t%d\n",book.borrowedBooks);
     if(restriction(book))printf("Esse livro esta disponivel para emprestimo\n");
     else printf("Esse livro nao esta disponivel para emprestimo\n");
+    return 1;
  
 }
 
+int insertBook(TBook book, TModuleBook *mod1){
+    if(mod1->index < 100){
+        mod1->books[mod1->index] = book;
+        printBook(mod1->books[mod1->index]);
+        mod1->index++;
+        printf("Livro cadastrado com sucesso!\n");
+        return 1;
+    }else{
+        printf("O armazenamento de livros esta lotado!\n");
+        return 0;
+    }
+}
+
+int startBook(TModuleBook *mod1){
+    mod1->index = 0;
+    return 1;
+}
+
+int printAllBooks(TModuleBook mod1){
+
+    for(int i=0; i<mod1.index; i++){
+        printBook(mod1.books[i]);
+    }
+    return 1;
+}

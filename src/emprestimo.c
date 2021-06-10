@@ -1,6 +1,6 @@
 #include "..\headers\emprestimo.h"
 
-void readBorrow(Borrow *borrow){
+void readBorrow(TBorrow *borrow){
     printf("Digite o cpf do usuario\n\t");
     fflush(stdin);
     fgets(borrow->cpf,16,stdin);
@@ -15,7 +15,7 @@ void readBorrow(Borrow *borrow){
     borrow->deliveryDate.year = 0;
 }
 
-void printBorrow(Borrow borrow){
+void printBorrow(TBorrow borrow){
     printf("Cpf:\n\t%s",borrow.cpf);
     printf("ISBN:\n\t%s",borrow.isbn);
     printf("Data de emprestimo:\n\t");

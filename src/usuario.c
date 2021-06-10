@@ -2,7 +2,7 @@
 
 
 
-void readUser(User *user){
+void readUser(TUser *user){
     
     printf("Digite o cpf do usuario(xxx.xxx.xxx-xx)\n\t");
     fflush(stdin);
@@ -64,7 +64,7 @@ void readUser(User *user){
     }
 };
 
-void printUser(User user){
+void printUser(TUser user){
     switch (user.userType)
     {
     case 0:
@@ -91,9 +91,9 @@ void printUser(User user){
     printf("Data de nascimento\n\t");
     printDate(user.birthDate);
     printf("Endereco:\n");
-    printf("\tLogradouro:\n\t%s",user.address.address);
-    printf("\tNumero:\n\t%d\n",user.address.number);
-    printf("\tBairro:\n\t%s",user.address.bairro);
-    printf("\tCidade:\n\t%s",user.address.city);
-    printf("\tCEP:\n\t%s",user.address.cep);
+    printf("\tLogradouro:\n\t\t%s",user.address.address);
+    printf("\tNumero:\n\t\t%d\n",user.address.number);
+    printf("\tBairro:\n\t\t%s",user.address.bairro);
+    printf("\tCidade:\n\t\t%s",user.address.city);
+    printf("\tCEP:\n\t\t%s",user.address.cep);
 }

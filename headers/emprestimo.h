@@ -6,13 +6,18 @@
 typedef struct borrow{
     char cpf[16];
     char isbn[15];
-    Date borrowDate;
-    Date returnDate;
-    Date deliveryDate;
-}Borrow;
+    TDate borrowDate;
+    TDate returnDate;
+    TDate deliveryDate;
+}TBorrow;
 
-void readBorrow(Borrow *borrow);
+typedef struct borrows{
+    TBorrow borrows[100];
+    int index;
+}TModuleBorrow;
 
-void printBorrow(Borrow borrow);
+void readBorrow(TBorrow *borrow);
+
+void printBorrow(TBorrow borrow);
 
 #endif

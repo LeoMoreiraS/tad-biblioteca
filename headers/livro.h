@@ -12,18 +12,30 @@ typedef struct book{
     char title[50];
     char publisher[50];
     char placePublish[50];
-    Date datePublish;
+    TDate datePublish;
     char firstAuthor[50];
     char secondAuthor[50];
     int editionNumber;
     int totalBooks;
     int borrowedBooks;
     int remainingBooks;
-}Book;
+}TBook;
 
-void readBook(Book *book);
+typedef struct library{
+    TBook books[100];
+    int index;
+}TModuleBook;
 
-int restriction(Book book);
+int readBook(TBook *book);
 
-void printBook(Book book);
+int restriction(TBook book);
+
+int printBook(TBook book);
+
+int insertBook(TBook book, TModuleBook *mod1);
+
+int startBook(TModuleBook *mod1);
+
+int printAllBooks(TModuleBook mod1);
+
 #endif 

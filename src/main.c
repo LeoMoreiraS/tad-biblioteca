@@ -7,14 +7,21 @@ int main(){
     //testes
     
     //teste leitura e impressao usuario
-    User user;
+    TBook book;
+    TModuleBook mod1;
+    startBook(&mod1);
+    readBook(&book)?insertBook(book,&mod1):printf("Falha na insercao do livro\n");
+    printAllBooks(mod1);
+
+    
+    
+
+    TUser user;
     readUser(&user);
     printUser(user);
     /*
     //teste leitura e impressao livro
-    Book book;
-    readBook(&book);
-    printBook(book);
+    
     //teste geracao da data de entrega
     Date date;
     Date date2;

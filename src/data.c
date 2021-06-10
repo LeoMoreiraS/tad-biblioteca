@@ -1,6 +1,6 @@
 #include "..\headers\data.h"
 
-void readDate(Date *date){
+void readDate(TDate *date){
 
     printf("\tDigite o dia\n\t");
     int toggle=0;
@@ -32,7 +32,7 @@ void readDate(Date *date){
     
 
 }
-void printDate(Date date){
+void printDate(TDate date){
     if(date.day>=10 && date.month>=10){
         printf("%d/%d/%d\n",date.day,date.month,date.year);
     }else if(date.day<10&&date.month<10){
@@ -44,7 +44,7 @@ void printDate(Date date){
     }
 }
 
-void dateOfReturn(Date borrowDate, Date *returnDate){
+void dateOfReturn(TDate borrowDate, TDate *returnDate){
 
     if(borrowDate.day<=14){
         returnDate->day = borrowDate.day+14;
@@ -119,7 +119,7 @@ void dateOfReturn(Date borrowDate, Date *returnDate){
     }
 }
 
-int leapYearCalc(Date date){
+int leapYearCalc(TDate date){
     if(date.year%4==0){
         if(date.year%100 == 0){
             if(date.year%400 == 0){
@@ -135,7 +135,7 @@ int leapYearCalc(Date date){
     }
 }
 
-int fineCalc(Date returnDate,Date deliveryDate){
+int fineCalc(TDate returnDate,TDate deliveryDate){
     int fine = 0;
     if(returnDate.year==deliveryDate.year){
         if(returnDate.month==deliveryDate.month){//mesmo ano e mes
