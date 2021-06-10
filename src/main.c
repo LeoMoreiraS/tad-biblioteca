@@ -10,15 +10,21 @@ int main(){
     TBook book;
     TModuleBook mod1;
     startBook(&mod1);
-    readBook(&book)?insertBook(book,&mod1):printf("Falha na insercao do livro\n");
+    readBook(&book)?insertBook(&mod1,book):printf("Falha na insercao do livro\n");
     printAllBooks(mod1);
 
-    
-    
-
     TUser user;
-    readUser(&user);
-    printUser(user);
+    TModuleUser mod2;
+    startUser(&mod2);
+    readUser(&user)?insertUser(&mod2,user):printf("Falha na insercao do usuario\n");
+    printAllUsers(mod2);
+
+    TBorrow borrow;
+    TModuleBorrow mod3;
+    startBorrow(&mod3);
+    readBorrow(&borrow)?insertBorrow(&mod3,borrow):printf("Falha na insercao do emprestimo");
+    printAllBorrows(mod3);
+
     /*
     //teste leitura e impressao livro
     

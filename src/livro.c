@@ -56,7 +56,7 @@ int printBook(TBook book){
  
 }
 
-int insertBook(TBook book, TModuleBook *mod1){
+int insertBook( TModuleBook *mod1, TBook book){
     if(mod1->index < 100){
         mod1->books[mod1->index] = book;
         printBook(mod1->books[mod1->index]);

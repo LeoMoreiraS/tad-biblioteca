@@ -2,7 +2,7 @@
 
 
 
-void readUser(TUser *user){
+int readUser(TUser *user){
     
     printf("Digite o cpf do usuario(xxx.xxx.xxx-xx)\n\t");
     fflush(stdin);
@@ -60,11 +60,13 @@ void readUser(TUser *user){
         break;
     default:
         printf("O usuario invalido!\n\t");
+        return 0;
         break;
     }
+    return 1;
 };
 
-void printUser(TUser user){
+int printUser(TUser user){
     switch (user.userType)
     {
     case 0:
@@ -96,4 +98,32 @@ void printUser(TUser user){
     printf("\tBairro:\n\t\t%s",user.address.bairro);
     printf("\tCidade:\n\t\t%s",user.address.city);
     printf("\tCEP:\n\t\t%s",user.address.cep);
+}
+
+int insertUser(TModuleUser *mod2,TUser user){
+    if(mod2->index < 100){
+        mod2->users[mod2->index] = user;
+        printUser(mod2->users[mod2->index]);
+        mod2->index++;
+        printf("Usuario cadastrado com sucesso!\n");
+        return 1;
+    }else{
+        printf("O armazenamento de usuarios esta lotado!\n");
+        return 0;
+    }
+
+}
+
+
+int startUser(TModuleUser *mod2){
+    mod2->index = 0;
+    return 1;
+}
+
+int printAllUsers(TModuleUser mod2){
+
+    for(int i=0; i<mod2.index; i++){
+        printUser(mod2.users[i]);
+    }
+    return 1;
 }

@@ -1,6 +1,6 @@
 #include "..\headers\emprestimo.h"
 
-void readBorrow(TBorrow *borrow){
+int readBorrow(TBorrow *borrow){
     printf("Digite o cpf do usuario\n\t");
     fflush(stdin);
     fgets(borrow->cpf,16,stdin);
@@ -13,9 +13,10 @@ void readBorrow(TBorrow *borrow){
     borrow->deliveryDate.day = 0;
     borrow->deliveryDate.month = 0;
     borrow->deliveryDate.year = 0;
+    return 1;
 }
 
-void printBorrow(TBorrow borrow){
+int printBorrow(TBorrow borrow){
     printf("Cpf:\n\t%s",borrow.cpf);
     printf("ISBN:\n\t%s",borrow.isbn);
     printf("Data de emprestimo:\n\t");
@@ -28,5 +29,31 @@ void printBorrow(TBorrow borrow){
         printf("Data de devolucao:\n\t");
         printDate(borrow.deliveryDate);
     }
+    return 1;
 
+}
+int insertBorrow(TModuleBorrow *mod3, TBorrow borrow){
+    if(mod3->index < 100){
+        mod3->borrows[mod3->index] = borrow;
+        printBorrow(mod3->borrows[mod3->index]);
+        mod3->index++;
+        printf("Emprestimo cadastrado com sucesso!\n");
+        return 1;
+    }else{
+        printf("O armazenamento de emprestimos esta lotado!\n");
+        return 0;
+    }
+}
+
+int startBorrow(TModuleBorrow *mod3){
+    mod3->index = 0;
+    return 1;
+}
+
+int printAllBorrows(TModuleBorrow mod3){
+
+    for(int i=0; i<mod3.index; i++){
+        printBorrow(mod3.borrows[i]);
+    }
+    return 1;
 }

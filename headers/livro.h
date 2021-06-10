@@ -32,7 +32,7 @@ int restriction(TBook book);
 
 int printBook(TBook book);
 
-int insertBook(TBook book, TModuleBook *mod1);
+int insertBook(TModuleBook *mod1, TBook book);
 
 int startBook(TModuleBook *mod1);
 

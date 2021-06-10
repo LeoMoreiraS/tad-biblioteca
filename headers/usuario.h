@@ -33,6 +33,11 @@ typedef struct users{
     int index;
 }TModuleUser;
 
-void readUser(TUser *user);
-void printUser(TUser user);
+int readUser(TUser *user);
+int printUser(TUser user);
+int insertUser(TModuleUser *mod2,TUser user);
+int startUser(TModuleUser *mod2);
+int printAllUsers(TModuleUser mod2);
+
+
 #endif 

@@ -16,8 +16,14 @@ typedef struct borrows{
     int index;
 }TModuleBorrow;
 
-void readBorrow(TBorrow *borrow);
+int readBorrow(TBorrow *borrow);
 
-void printBorrow(TBorrow borrow);
+int printBorrow(TBorrow borrow);
+
+int insertBorrow(TModuleBorrow *mod3, TBorrow borrow);
+
+int startBorrow(TModuleBorrow *mod3);
+
+int printAllBorrows(TModuleBorrow mod3);
 
 #endif
