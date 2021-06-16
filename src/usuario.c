@@ -127,3 +127,29 @@ int printAllUsers(TModuleUser mod2){
     }
     return 1;
 }
+
+int searchUser(TModuleUser mod2,TUser user){
+    for(int i=0; i<mod2.index; i++){
+        if(strcmp(user.cpf,mod2.users[i].cpf) == 0){
+            printf("Este usuario foi encontrado : \n");
+            printUser(mod2.users[i]);
+            return i;
+        }
+    }
+    return -1;
+}
+
+int updateUser(TModuleUser *mod2,TUser user,int index){
+    mod2->users[index]=user;
+    printf("Usuario alterado com sucesso\n");
+    return 1;
+}
+
+int deleteUser(TModuleUser *mod2,int index){
+    for (int i = index; i < mod2->index; i++){
+        mod2->users[i] = mod2->users[i+1];
+    }
+    printf("Usuario deletado com sucesso\n");
+    mod2->index--;
+    return 1;
+}

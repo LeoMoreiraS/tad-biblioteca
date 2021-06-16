@@ -81,3 +81,31 @@ int printAllBooks(TModuleBook mod1){
     }
     return 1;
 }
+
+int searchBook(TModuleBook mod1,TBook book){
+    for(int i=0; i<mod1.index; i++){
+        printf("%d\n",strcmp(book.title,mod1.books[i].title));
+        if(strcmp(book.title, mod1.books[i].title) == 0){
+            printf("Este livro foi encontrado : \n");
+            printBook(mod1.books[i]);
+            return i;
+        }
+    }
+    return -1;
+}
+
+int updateBook(TModuleBook *mod1,TBook book,int index){
+    mod1->books[index]=book;
+    printf("Livro alterado com sucesso\n");
+    return 1;
+}
+
+int deleteBook(TModuleBook *mod1,int index){
+    for (int i = index; i < mod1->index; i++){
+        mod1->books[i] = mod1->books[i+1];
+    }
+    printf("Livro deletado com sucesso\n");
+    mod1->index--;
+    return 1;
+}
+

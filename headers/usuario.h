@@ -3,6 +3,7 @@
 #define USUARIO_H
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "data.h"
 
 
@@ -38,6 +39,8 @@ int printUser(TUser user);
 int insertUser(TModuleUser *mod2,TUser user);
 int startUser(TModuleUser *mod2);
 int printAllUsers(TModuleUser mod2);
-
+int searchUser(TModuleUser mod2,TUser user);
+int updateUser(TModuleUser *mod2,TUser user,int index);
+int deleteUser(TModuleUser *mod2,int index);
 
 #endif 

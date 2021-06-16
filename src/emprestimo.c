@@ -57,3 +57,29 @@ int printAllBorrows(TModuleBorrow mod3){
     }
     return 1;
 }
+
+int searchBorrow(TModuleBorrow mod3,TBorrow borrow){
+    for(int i=0; i<mod3.index; i++){
+        if(strcmp(borrow.cpf,mod3.borrows[i].cpf) == 0){
+            printf("Este emprestimo foi encontrado : \n");
+            printBorrow(mod3.borrows[i]);
+            return i;
+        }
+    }
+    return -1;
+}
+
+int updateBorrow(TModuleBorrow *mod3,TBorrow borrow,int index){
+    mod3->borrows[index]=borrow;
+    printf("Emprestimo alterado com sucesso\n");
+    return 1;
+}
+
+int deleteBorrow(TModuleBorrow *mod3,int index){
+    for (int i = index; i < mod3->index; i++){
+        mod3->borrows[i] = mod3->borrows[i+1];
+    }
+    printf("Emprestimo deletado com sucesso\n");
+    mod3->index--;
+    return 1;
+}

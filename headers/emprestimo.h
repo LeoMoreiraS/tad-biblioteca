@@ -2,6 +2,7 @@
 #define EMPRESTIMO_H
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "data.h"
 typedef struct borrow{
     char cpf[16];
@@ -26,4 +27,9 @@ int startBorrow(TModuleBorrow *mod3);
 
 int printAllBorrows(TModuleBorrow mod3);
 
+int searchBorrow(TModuleBorrow mod3,TBorrow borrow);
+
+int updateBorrow(TModuleBorrow *mod3,TBorrow borrow,int index);
+
+int deleteBorrow(TModuleBorrow *mod3,int index);
 #endif

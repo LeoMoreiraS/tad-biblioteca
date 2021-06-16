@@ -3,7 +3,9 @@
 #define LIVRO_H
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "data.h"
+
 
 
 
@@ -37,5 +39,11 @@ int insertBook(TModuleBook *mod1, TBook book);
 int startBook(TModuleBook *mod1);
 
 int printAllBooks(TModuleBook mod1);
+
+int searchBook(TModuleBook mod1,TBook book);
+
+int updateBook(TModuleBook *mod1,TBook book,int index);
+
+int deleteBook(TModuleBook *mod1,int index);
 
 #endif 
