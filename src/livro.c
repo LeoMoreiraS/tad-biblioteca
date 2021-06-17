@@ -75,7 +75,9 @@ int startBook(TModuleBook *mod1){
 }
 
 int printAllBooks(TModuleBook mod1){
-
+    if(mod1.index == 0){
+        printf("\n\tNenhum livro encontrado!\n\t");
+    }
     for(int i=0; i<mod1.index; i++){
         printBook(mod1.books[i]);
     }

@@ -24,11 +24,17 @@ int main(){
             break;
 
         case 2:
-            moduleUser(&mod2,user);
+            system("cls");
+            menuMod2();
+            system("pause");
+            //moduleUser(&mod2,user);
             break;
 
         case 3:
-            moduleBorrow(&mod3,borrow);
+            system("cls");
+            menuMod3();
+            system("pause");
+            //moduleBorrow(&mod3,borrow);
             break;
         case 4:
             system("cls");

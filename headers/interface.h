@@ -8,6 +8,10 @@
 
 
 void menuText1();
+void menuMod1();
+void menuMod2();
+void menuMod3();
+
 
 void moduleBook(TModuleBook *mod1,TBook book);
 void moduleUser(TModuleUser *mod2,TUser user);
