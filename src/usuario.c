@@ -63,6 +63,8 @@ int readUser(TUser *user){
         return 0;
         break;
     }
+    user->multa=0;
+    user->emprestimos=0;
     return 1;
 };
 
@@ -152,4 +154,28 @@ int deleteUser(TModuleUser *mod2,int index){
     printf("Usuario deletado com sucesso\n");
     mod2->index--;
     return 1;
+}
+
+int checkUser(TUser user){
+    if(user.multa==0){
+        switch (user.userType){
+        case 0:
+            if(user.emprestimos<3){
+                return 1;                
+            }
+            break;
+        case 1:
+            if(user.emprestimos<5){
+                return 1;
+            }
+            break;
+        case 2:
+            if(user.emprestimos<3){
+                return 1;
+            }
+            break;
+        }
+    }
+    return 0;
+
 }

@@ -28,7 +28,7 @@ int main(){
             break;
 
         case 3:
-            moduleBorrow(&mod3,borrow);
+            moduleBorrow(&mod3,borrow,&mod2,user,&mod1,book);
             break;
         case 4:
             system("cls");

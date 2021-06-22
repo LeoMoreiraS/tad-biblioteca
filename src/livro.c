@@ -1,7 +1,7 @@
 #include "..\headers\livro.h"
 
 int restriction(TBook book){
-    if(book.totalBooks*0.1 <= (book.totalBooks - book.borrowedBooks)) return 1;
+    if(book.totalBooks*0.1 + 1  < (float)(book.totalBooks - book.borrowedBooks)) return 1;//book.totalBooks*0.1 = 10% dos livros total - borrowed = livros na biblioteca
     else return 0;
 }
 
@@ -86,7 +86,6 @@ int printAllBooks(TModuleBook mod1){
 
 int searchBook(TModuleBook mod1,TBook book){
     for(int i=0; i<mod1.index; i++){
-        printf("%d\n",strcmp(book.title,mod1.books[i].title));
         if(strcmp(book.title, mod1.books[i].title) == 0){
             printf("Este livro foi encontrado : \n");
             printBook(mod1.books[i]);

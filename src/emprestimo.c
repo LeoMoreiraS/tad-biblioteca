@@ -1,12 +1,12 @@
 #include "..\headers\emprestimo.h"
 
 int readBorrow(TBorrow *borrow){
-    printf("Digite o cpf do usuario\n\t");
-    fflush(stdin);
-    fgets(borrow->cpf,16,stdin);
-    printf("Digite o ISBN do livro\n\t");
-    fflush(stdin);
-    fgets(borrow->isbn,15,stdin);
+    //printf("Digite o cpf do usuario\n\t");
+    //fflush(stdin);
+    //fgets(borrow->cpf,16,stdin);
+    //printf("Digite o ISBN do livro\n\t");
+    //fflush(stdin);
+    //fgets(borrow->isbn,15,stdin);
     printf("Digite a data de emprestimo\n");
     readDate(&borrow->borrowDate);
     dateOfReturn(borrow->borrowDate,&borrow->returnDate);
@@ -59,8 +59,9 @@ int printAllBorrows(TModuleBorrow mod3){
 }
 
 int searchBorrow(TModuleBorrow mod3,TBorrow borrow){
+
     for(int i=0; i<mod3.index; i++){
-        if(strcmp(borrow.cpf,mod3.borrows[i].cpf) == 0){
+        if(dateCmp(mod3.borrows[i].borrowDate, borrow.borrowDate)){
             printf("Este emprestimo foi encontrado : \n");
             printBorrow(mod3.borrows[i]);
             return i;

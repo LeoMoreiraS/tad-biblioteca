@@ -269,3 +269,10 @@ int fineCalc(TDate returnDate,TDate deliveryDate){
         
     }
 }
+
+int dateCmp(TDate date1,TDate date2){
+    if(date1.year==date2.year&&date1.month==date2.month&&date1.day==date2.day){
+        return 1;
+    }
+    return 0;
+}
