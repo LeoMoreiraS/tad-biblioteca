@@ -15,6 +15,6 @@ void menuMod3();
 
 void moduleBook(TModuleBook *mod1,TBook book);
 void moduleUser(TModuleUser *mod2,TUser user);
-void moduleBorrow(TModuleBorrow *mod3,TBorrow borrow);
+void moduleBorrow(TModuleBorrow *mod3,TBorrow borrow,TModuleUser *mod2,TUser user,TModuleBook *mod1,TBook book);
 
 #endif

@@ -22,4 +22,5 @@ int leapYearCalc(TDate date);
 
 int fineCalc(TDate returnDate,TDate deliveryDate);
 
+int dateCmp(TDate date1,TDate date2);
 #endif 

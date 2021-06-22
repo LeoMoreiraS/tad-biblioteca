@@ -27,6 +27,8 @@ typedef struct user{
     TDate birthDate;
     int userType;
     char courseDep[50];
+    int multa;
+    int emprestimos;
 }TUser;
 
 typedef struct users{
@@ -42,5 +44,5 @@ int printAllUsers(TModuleUser mod2);
 int searchUser(TModuleUser mod2,TUser user);
 int updateUser(TModuleUser *mod2,TUser user,int index);
 int deleteUser(TModuleUser *mod2,int index);
-
+int checkUser(TUser user);
 #endif 
