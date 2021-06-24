@@ -27,8 +27,8 @@ typedef struct user{
     TDate birthDate;
     int userType;
     char courseDep[50];
-    int multa;
-    int emprestimos;
+    int fine;
+    int borrows;
 }TUser;
 
 typedef struct users{

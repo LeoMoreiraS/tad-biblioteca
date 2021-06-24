@@ -10,6 +10,7 @@ typedef struct borrow{
     TDate borrowDate;
     TDate returnDate;
     TDate deliveryDate;
+    int fine;
 }TBorrow;
 
 typedef struct borrows{
@@ -32,4 +33,8 @@ int searchBorrow(TModuleBorrow mod3,TBorrow borrow);
 int updateBorrow(TModuleBorrow *mod3,TBorrow borrow,int index);
 
 int deleteBorrow(TModuleBorrow *mod3,int index);
+
+int returnBook(TModuleBorrow *mod3,TBorrow borrow,int index);
+
+int payFine(TModuleBorrow *mod3,TBorrow borrow,int index);
 #endif

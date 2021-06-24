@@ -63,8 +63,8 @@ int readUser(TUser *user){
         return 0;
         break;
     }
-    user->multa=0;
-    user->emprestimos=0;
+    user->fine=0;
+    user->borrows=0;
     return 1;
 };
 
@@ -100,6 +100,8 @@ int printUser(TUser user){
     printf("\tBairro:\n\t\t%s",user.address.bairro);
     printf("\tCidade:\n\t\t%s",user.address.city);
     printf("\tCEP:\n\t\t%s",user.address.cep);
+    printf("Emprestimos:\n\t%d\n",user.borrows);
+    printf("Multa:\n\t%d\n",user.fine);
 }
 
 int insertUser(TModuleUser *mod2,TUser user){
@@ -123,7 +125,10 @@ int startUser(TModuleUser *mod2){
 }
 
 int printAllUsers(TModuleUser mod2){
-
+    if(mod2.index == 0){
+        printf("Nenhum Usuario encontrado\n");
+        return 0;
+    }
     for(int i=0; i<mod2.index; i++){
         printUser(mod2.users[i]);
     }
@@ -157,20 +162,20 @@ int deleteUser(TModuleUser *mod2,int index){
 }
 
 int checkUser(TUser user){
-    if(user.multa==0){
+    if(user.fine==0){
         switch (user.userType){
         case 0:
-            if(user.emprestimos<3){
-                return 1;                
+            if(user.borrows<3){
+                return 1;           
             }
             break;
         case 1:
-            if(user.emprestimos<5){
+            if(user.borrows<5){
                 return 1;
             }
             break;
         case 2:
-            if(user.emprestimos<3){
+            if(user.borrows<3){
                 return 1;
             }
             break;

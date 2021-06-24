@@ -30,7 +30,7 @@ int main(){
         case 3:
             moduleBorrow(&mod3,borrow,&mod2,user,&mod1,book);
             break;
-        case 4:
+        case 0:
             system("cls");
             printf("\n\t<><><><><><><><><><> Saindo do sistema <><><><><><><><><><>\n");
             break;
@@ -38,7 +38,7 @@ int main(){
         default:
             break;
         }  
-    } while (op != 4);
+    } while (op != 0);
     
 
     return 0;
