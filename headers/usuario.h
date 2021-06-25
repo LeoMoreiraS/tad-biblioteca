@@ -36,13 +36,31 @@ typedef struct users{
     int index;
 }TModuleUser;
 
+/* Faz a leitura dos dados para cadastro ou alteração dos dados do usuario*/
 int readUser(TUser *user);
+
+/* Função para imprimir os dados dos usuarios */
 int printUser(TUser user);
+
+/* Função para inserir um livro no modulo de usuario */
 int insertUser(TModuleUser *mod2,TUser user);
+
+/* Função para inicializar o modulo de usuario */
 int startUser(TModuleUser *mod2);
+
+/* Função para imprimir todos os usuarios cadastrados */
+
 int printAllUsers(TModuleUser mod2);
+
+/* Função para buscar um usuario pelo cpf */
 int searchUser(TModuleUser mod2,TUser user);
+
+/* função para atualiza um usuario no sistema de usuarios */
 int updateUser(TModuleUser *mod2,TUser user,int index);
+
+/*função para excluir um usuario do sistema de usuarios */
 int deleteUser(TModuleUser *mod2,int index);
+
+/*Função para checar o usuario está apto para fazer um emprestimo */
 int checkUser(TUser user);
 #endif 

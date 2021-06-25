@@ -103,7 +103,10 @@ void moduleBook(TModuleBook *mod1,TBook book){
             index = searchBook(*mod1,book);
             if(index != -1){
                 system("cls");
-                readBook(&book)?updateBook(mod1,book,index):printf("Falha na leitura dos dados\n");
+                if(book.borrowedBooks==0)
+                    readBook(&book)?updateBook(mod1,book,index):printf("Falha na leitura dos dados\n");
+                else
+                    printf("Não pode alterar livro com emprestimos pendentes\n");
             }else{
                 system("cls");
                 printf("\n\tLivro nao encontrado\n\t");
