@@ -67,9 +67,11 @@ int searchBorrow(TModuleBorrow mod3,TBorrow borrow){
 
     for(int i=0; i<mod3.index; i++){
         if(dateCmp(mod3.borrows[i].borrowDate, borrow.borrowDate)){
-            printf("Este emprestimo foi encontrado : \n");
-            printBorrow(mod3.borrows[i]);
-            return i;
+            if(strcmp(mod3.borrows[i].isbn, borrow.isbn)==0&&strcmp(mod3.borrows[i].cpf,borrow.cpf)==0){
+                printf("Este emprestimo foi encontrado : \n");
+                printBorrow(mod3.borrows[i]);
+                return i;
+            }
         }
     }
     return -1;

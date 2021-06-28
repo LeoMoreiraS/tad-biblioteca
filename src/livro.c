@@ -2,7 +2,7 @@
 
 
 int restriction(TBook book){
-    if(book.totalBooks==1) return 0;
+    if(book.totalBooks==1||book.totalBooks-book.borrowedBooks==1) return 0;
     if(book.totalBooks*0.1  < (float)(book.totalBooks - book.borrowedBooks)) return 1;//book.totalBooks*0.1 = 10% dos livros total - borrowed = livros na biblioteca
     else return 0;
 }
