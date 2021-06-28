@@ -1,7 +1,7 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "..\headers\interface.h"
-
 int main(){
-    //testes
     TBook book;
     TModuleBook mod1;
     StartBook(&mod1);

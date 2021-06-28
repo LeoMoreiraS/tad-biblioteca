@@ -1,5 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "..\headers\usuario.h"
-
 
 
 int ReadUser(TUser *user){
