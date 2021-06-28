@@ -1,7 +1,7 @@
 #include "..\headers\interface.h"
 
 
-void menuText1(){
+void MenuText1(){
     printf("\n\t<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
     printf("\n\t<><><><><><><><><><>         TAD BIBLIOTECA       <><><><><><><><><><>");
     printf("\n\t<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
@@ -16,7 +16,7 @@ void menuText1(){
     printf("\n\t<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>\n\t>>> ");
 }
 
-void menuMod1(){
+void MenuMod1(){
     printf("\n\t<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
     printf("\n\t<><><><><><><><><><>      SISTEMA DE LIVROS       <><><><><><><><><><>");
     printf("\n\t<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
@@ -30,7 +30,7 @@ void menuMod1(){
     printf("\n\t<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
     printf("\n\t<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>\n\t>>> ");
 }
-void menuMod2(){
+void MenuMod2(){
     
     printf("\n\t<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
     printf("\n\t<><><><><><><><><><>     SISTEMA DE USUARIOS      <><><><><><><><><><>");
@@ -45,7 +45,7 @@ void menuMod2(){
     printf("\n\t<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
     printf("\n\t<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>\n\t>>> ");
 }
-void menuMod3(){
+void MenuMod3(){
     printf("\n\t<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
     printf("\n\t<><><><><><><><><><>    SISTEMA DE EMPRESTIMOS    <><><><><><><><><><>");
     printf("\n\t<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
@@ -61,18 +61,18 @@ void menuMod3(){
 }
 
 
-void moduleBook(TModuleBook *mod1,TBook book){
+void ModuleBook(TModuleBook *mod1,TBook book){
     int op = 0;
     int index = 0;
     do{
         system("cls");
-        menuMod1();
+        MenuMod1();
         fflush(stdin);
         scanf("%d",&op);//leitura da opção
         switch (op){
         case 1://Impressão de todos os livros
             system("cls");
-            printAllBooks(*mod1);
+            PrintAllBooks(*mod1);
             system("pause");        
             break;
         case 2://Pesquisa de livro
@@ -80,10 +80,10 @@ void moduleBook(TModuleBook *mod1,TBook book){
             printf("\n\tDigite o titulo do livro\n\t>>> ");
             fflush(stdin);
             fgets(book.title,50,stdin);
-            index = searchBook(*mod1,book);
+            index = SearchBook(*mod1,book);
             if(index != -1){
                 system("cls");
-                printBook(mod1->books[index]);
+                PrintBook(mod1->books[index]);
             }else{
                 system("cls");
                 printf("\n\tLivro nao encontrado\n\t");
@@ -92,7 +92,7 @@ void moduleBook(TModuleBook *mod1,TBook book){
             break;
         case 3:
             system("cls");//cadastro de livro
-            readBook(&book)?insertBook(mod1,book):printf("Falha na insercao do livro\n");
+            ReadBook(&book)?InsertBook(mod1,book):printf("Falha na insercao do livro\n");
             system("pause");        
             break;
         case 4://Alterar livro
@@ -100,12 +100,12 @@ void moduleBook(TModuleBook *mod1,TBook book){
             printf("\n\tDigite o titulo do livro\n\t>>> ");
             fflush(stdin);
             fgets(book.title,50,stdin);
-            index = searchBook(*mod1,book);
+            index = SearchBook(*mod1,book);
             if(index != -1){
                 system("cls");
                 book=mod1->books[index];
                 if(book.borrowedBooks==0)
-                    readBook(&book)?updateBook(mod1,book,index):printf("Falha na leitura dos dados\n");
+                    ReadBook(&book)?UpdateBook(mod1,book,index):printf("Falha na leitura dos dados\n");
                 else
                     printf("Não pode alterar livros com emprestimos pendentes\n");
             }else{
@@ -119,15 +119,15 @@ void moduleBook(TModuleBook *mod1,TBook book){
             printf("\n\tDigite o titulo do livro\n\t>>> ");
             fflush(stdin);
             fgets(book.title,50,stdin);
-            index = searchBook(*mod1,book);
+            index = SearchBook(*mod1,book);
             if(index != -1){
                 book=mod1->books[index];
                  if(book.borrowedBooks==0)
-                    readBook(&book)?updateBook(mod1,book,index):printf("Falha na leitura dos dados\n");
+                    ReadBook(&book)?UpdateBook(mod1,book,index):printf("Falha na leitura dos dados\n");
                 else
                     printf("Não pode excluir livros com emprestimos pendentes\n");
                 system("cls");
-                deleteBook(mod1,index);
+                DeleteBook(mod1,index);
             }else{
                 system("cls");
                 printf("\n\tLivro nao encontrado\n\t");
@@ -152,18 +152,18 @@ void moduleBook(TModuleBook *mod1,TBook book){
     }while(op!=0);
 }
 
-void moduleUser(TModuleUser *mod2,TUser user){
+void ModuleUser(TModuleUser *mod2,TUser user){
     int op = 0;
     int index = 0;
     do{
         system("cls");
-        menuMod2();
+        MenuMod2();
         fflush(stdin);
         scanf("%d",&op);//leitura da opção
         switch (op){
         case 1://Impressão de todos os usuarios
             system("cls");
-            printAllUsers(*mod2);
+            PrintAllUsers(*mod2);
             system("pause");        
             break;
         case 2://Pesquisa de usuario
@@ -171,10 +171,10 @@ void moduleUser(TModuleUser *mod2,TUser user){
             printf("\n\tDigite o cpf do usuario\n\t>>> ");
             fflush(stdin);
             fgets(user.cpf,16,stdin);
-            index = searchUser(*mod2,user);
+            index = SearchUser(*mod2,user);
             if(index != -1){
                 system("cls");
-                printUser(mod2->users[index]);
+                PrintUser(mod2->users[index]);
             }else{
                 system("cls");
                 printf("\n\tUsuario nao encontrado\n\t");
@@ -183,7 +183,7 @@ void moduleUser(TModuleUser *mod2,TUser user){
             break;
         case 3:
             system("cls");//cadastro de usuario
-            readUser(&user)?insertUser(mod2,user):printf("Falha na insercao do usuario\n");
+            ReadUser(&user)?InsertUser(mod2,user):printf("Falha na insercao do usuario\n");
             system("pause");        
             break;
         case 4://Alterar usuario
@@ -191,7 +191,7 @@ void moduleUser(TModuleUser *mod2,TUser user){
              printf("\n\tDigite o cpf do usuario\n\t>>> ");
             fflush(stdin);
             fgets(user.cpf,16,stdin);
-            index = searchUser(*mod2,user);
+            index = SearchUser(*mod2,user);
             if(index != -1){
                 system("cls");
                 user = mod2->users[index];
@@ -199,7 +199,7 @@ void moduleUser(TModuleUser *mod2,TUser user){
                     printf("Não pode modificar usuario com emprestimo pendente\n");
                     break;
                 }
-               readUser(&user)?updateUser(mod2,user,index):printf("Falha na leitura dos dados\n");
+               ReadUser(&user)?UpdateUser(mod2,user,index):printf("Falha na leitura dos dados\n");
             }else{
                 system("cls");
                 printf("\n\tUsuario nao encontrado\n\t");
@@ -211,7 +211,7 @@ void moduleUser(TModuleUser *mod2,TUser user){
              printf("\n\tDigite o cpf do usuario\n\t>>> ");
             fflush(stdin);
             fgets(user.cpf,16,stdin);
-            index = searchUser(*mod2,user);
+            index = SearchUser(*mod2,user);
             if(index != -1){
                 system("cls");
                 system("cls");
@@ -220,7 +220,7 @@ void moduleUser(TModuleUser *mod2,TUser user){
                     printf("Não pode modificar usuario com emprestimo pendente\n");
                     break;
                 }
-                deleteUser(mod2,index);
+                DeleteUser(mod2,index);
             }else{
                 system("cls");
                 printf("\n\tUsuario nao encontrado\n\t");
@@ -246,18 +246,18 @@ void moduleUser(TModuleUser *mod2,TUser user){
     }while(op!=0);
 }
 
-void moduleBorrow(TModuleBorrow *mod3,TBorrow borrow,TModuleUser *mod2,TUser user,TModuleBook *mod1,TBook book){
+void ModuleBorrow(TModuleBorrow *mod3,TBorrow borrow,TModuleUser *mod2,TUser user,TModuleBook *mod1,TBook book){
     int op = 0;
     int index = 0,indexBook,indexUser;
     do{
         system("cls");
-        menuMod3();
+        MenuMod3();
         fflush(stdin);
         scanf("%d",&op);//leitura da opção
         switch (op){
         case 1://Impressão de todos os emprestimos
             system("cls");
-            printAllBorrows(*mod3);
+            PrintAllBorrows(*mod3);
             system("pause");        
             break;
         case 2://Pesquisa de emprestimmo
@@ -265,26 +265,26 @@ void moduleBorrow(TModuleBorrow *mod3,TBorrow borrow,TModuleUser *mod2,TUser use
             printf("\n\tDigite o cpf do usuario\n\t>>> ");
             fflush(stdin);
             fgets(user.cpf,16,stdin);
-            indexUser = searchUser(*mod2,user);
+            indexUser = SearchUser(*mod2,user);
             
             if(indexUser!=-1){
                 user = mod2->users[indexUser];
                 printf("\n\tDigite o titulo do livro\n\t>>> ");
                 fflush(stdin);
                 fgets(book.title,50,stdin);
-                indexBook = searchBook(*mod1,book);
+                indexBook = SearchBook(*mod1,book);
                 if(indexBook!=-1){
                     book = mod1->books[indexBook];
                     strcpy(borrow.cpf,user.cpf);
                     strcpy(borrow.isbn,book.isbn);
                     printf("\n\tDigite a data de emprestimo do livro\n ");
                     fflush(stdin);
-                    readDate(&borrow.borrowDate);
-                    index = searchBorrow(*mod3,borrow);
+                    ReadDate(&borrow.borrowDate);
+                    index = SearchBorrow(*mod3,borrow);
                     if(index != -1){
                         system("cls");
                         printf("Este emprestimo foi encontrado :\n");
-                        printBorrow(mod3->borrows[index]);
+                        PrintBorrow(mod3->borrows[index]);
                     }else{
                         system("cls");
                         printf("\n\tEmprestimo nao encontrado\n\t");
@@ -306,26 +306,26 @@ void moduleBorrow(TModuleBorrow *mod3,TBorrow borrow,TModuleUser *mod2,TUser use
             printf("\n\tDigite o cpf do usuario\n\t>>> ");
             fflush(stdin);
             fgets(user.cpf,16,stdin);
-            indexUser = searchUser(*mod2,user);
+            indexUser = SearchUser(*mod2,user);
             if(indexUser!=-1){
                 user = mod2->users[indexUser];
-                if(checkUser(user)){
+                if(CheckUser(user)){
                     
                     printf("\n\tDigite o titulo do livro\n\t>>> ");
                     fflush(stdin);
                     fgets(book.title,50,stdin);
-                    indexBook = searchBook(*mod1,book);
+                    indexBook = SearchBook(*mod1,book);
                     if(indexBook!=-1){
                         book = mod1->books[indexBook];
-                        if(restriction(book)){
+                        if(Restriction(book)){
                             strcpy(borrow.cpf,user.cpf);
                             strcpy(borrow.isbn,book.isbn);
-                            if(readBorrow(&borrow)){
-                                insertBorrow(mod3,borrow);
+                            if(ReadBorrow(&borrow)){
+                                InsertBorrow(mod3,borrow);
                                 book.borrowedBooks++;
-                                updateBook(mod1,book,indexBook);
+                                UpdateBook(mod1,book,indexBook);
                                 user.borrows++;
-                                updateUser(mod2,user,indexUser);
+                                UpdateUser(mod2,user,indexUser);
                             }else{
                                 printf("Falha na insercao do emprestimo");
                             }
@@ -354,22 +354,22 @@ void moduleBorrow(TModuleBorrow *mod3,TBorrow borrow,TModuleUser *mod2,TUser use
             printf("\n\tDigite o cpf do usuario\n\t>>> ");
             fflush(stdin);
             fgets(user.cpf,16,stdin);
-            indexUser = searchUser(*mod2,user);
+            indexUser = SearchUser(*mod2,user);
             
             if(indexUser!=-1){
                 user = mod2->users[indexUser];
                 printf("\n\tDigite o titulo do livro\n\t>>> ");
                 fflush(stdin);
                 fgets(book.title,50,stdin);
-                indexBook = searchBook(*mod1,book);
+                indexBook = SearchBook(*mod1,book);
                 if(indexBook!=-1){
                     book = mod1->books[indexBook];
                     strcpy(borrow.cpf,user.cpf);
                     strcpy(borrow.isbn,book.isbn);
                     printf("\n\tDigite a data de emprestimo do livro\n ");
                     fflush(stdin);
-                    readDate(&borrow.borrowDate);
-                    index = searchBorrow(*mod3,borrow);
+                    ReadDate(&borrow.borrowDate);
+                    index = SearchBorrow(*mod3,borrow);
                     if(index != -1){
                         system("cls");
                         borrow = mod3->borrows[index];
@@ -377,14 +377,14 @@ void moduleBorrow(TModuleBorrow *mod3,TBorrow borrow,TModuleUser *mod2,TUser use
                             system("cls");
                             printf("Digite a data de emprestimo\n");
                             fflush(stdin);
-                            readDate(&borrow.borrowDate);
+                            ReadDate(&borrow.borrowDate);
                             printf("Digite a data de entrega\n");
                             fflush(stdin);
-                            readDate(&borrow.returnDate);
+                            ReadDate(&borrow.returnDate);
                             fflush(stdin);
                             printf("Digite a data de devolução\n");
-                            readDate(&borrow.deliveryDate);
-                            updateBorrow(mod3,borrow,index);
+                            ReadDate(&borrow.deliveryDate);
+                            UpdateBorrow(mod3,borrow,index);
                             
                         }else{
                             printf("Não pode fazer alteração antes de receber o livro ou a multa\n");
@@ -409,27 +409,27 @@ void moduleBorrow(TModuleBorrow *mod3,TBorrow borrow,TModuleUser *mod2,TUser use
             printf("\n\tDigite o cpf do usuario\n\t>>> ");
             fflush(stdin);
             fgets(user.cpf,16,stdin);
-            indexUser = searchUser(*mod2,user);
+            indexUser = SearchUser(*mod2,user);
             
             if(indexUser!=-1){
                 user = mod2->users[indexUser];
                 printf("\n\tDigite o titulo do livro\n\t>>> ");
                 fflush(stdin);
                 fgets(book.title,50,stdin);
-                indexBook = searchBook(*mod1,book);
+                indexBook = SearchBook(*mod1,book);
                 if(indexBook!=-1){
                     book = mod1->books[indexBook];
                     strcpy(borrow.cpf,user.cpf);
                     strcpy(borrow.isbn,book.isbn);
                     printf("\n\tDigite a data de emprestimo do livro\n ");
                     fflush(stdin);
-                    readDate(&borrow.borrowDate);
-                    index = searchBorrow(*mod3,borrow);
+                    ReadDate(&borrow.borrowDate);
+                    index = SearchBorrow(*mod3,borrow);
                     if(index != -1){
                         borrow = mod3->borrows[index];
                         if(borrow.deliveryDate.day!=0&&borrow.fine==0){
                             system("cls");
-                            deleteBorrow(mod3,index);
+                            DeleteBorrow(mod3,index);
                         }else{
                             printf("Não pode fazer exclusão antes de receber o livro ou a multa\n");
                         }
@@ -453,37 +453,37 @@ void moduleBorrow(TModuleBorrow *mod3,TBorrow borrow,TModuleUser *mod2,TUser use
             printf("\n\tDigite o cpf do usuario\n\t>>> ");
             fflush(stdin);
             fgets(user.cpf,16,stdin);
-            indexUser = searchUser(*mod2,user);
+            indexUser = SearchUser(*mod2,user);
             
             if(indexUser!=-1){
                 user = mod2->users[indexUser];
                 printf("\n\tDigite o titulo do livro\n\t>>> ");
                 fflush(stdin);
                 fgets(book.title,50,stdin);
-                indexBook = searchBook(*mod1,book);
+                indexBook = SearchBook(*mod1,book);
                 if(indexBook!=-1){
                     book = mod1->books[indexBook];
                     strcpy(borrow.cpf,user.cpf);
                     strcpy(borrow.isbn,book.isbn);
                     printf("\n\tDigite a data de emprestimo do livro \n");
                     fflush(stdin);
-                    readDate(&borrow.borrowDate);
-                    index = searchBorrow(*mod3,borrow);
+                    ReadDate(&borrow.borrowDate);
+                    index = SearchBorrow(*mod3,borrow);
                     if(index != -1){
                         system("cls");
                         borrow = mod3->borrows[index];
-                        int state = returnBook(mod3,borrow,index);
+                        int state = ReturnBook(mod3,borrow,index);
                         if(state){
                             user.borrows--;
-                            updateUser(mod2,user,indexUser);
+                            UpdateUser(mod2,user,indexUser);
                             book.borrowedBooks--;
-                            updateBook(mod1,book,indexBook);
+                            UpdateBook(mod1,book,indexBook);
                         }else{
                             user.borrows--;
                             user.fine += mod3->borrows[index].fine;
-                            updateUser(mod2,user,indexUser);
+                            UpdateUser(mod2,user,indexUser);
                             book.borrowedBooks--;
-                            updateBook(mod1,book,indexBook);
+                            UpdateBook(mod1,book,indexBook);
                         }
                     }else{
                         system("cls");
@@ -505,31 +505,31 @@ void moduleBorrow(TModuleBorrow *mod3,TBorrow borrow,TModuleUser *mod2,TUser use
             printf("\n\tDigite o cpf do usuario\n\t>>> ");
             fflush(stdin);
             fgets(user.cpf,16,stdin);
-            indexUser = searchUser(*mod2,user);
+            indexUser = SearchUser(*mod2,user);
             
             if(indexUser!=-1){
                 user = mod2->users[indexUser];
                 printf("\n\tDigite o titulo do livro\n\t>>> ");
                 fflush(stdin);
                 fgets(book.title,50,stdin);
-                indexBook = searchBook(*mod1,book);
+                indexBook = SearchBook(*mod1,book);
                 if(indexBook!=-1){
                     book = mod1->books[indexBook];
                     strcpy(borrow.cpf,user.cpf);
                     strcpy(borrow.isbn,book.isbn);
                     printf("\n\tDigite a data de emprestimo do livro \n");
                     fflush(stdin);
-                    readDate(&borrow.borrowDate);
-                    index = searchBorrow(*mod3,borrow);
+                    ReadDate(&borrow.borrowDate);
+                    index = SearchBorrow(*mod3,borrow);
                     if(index != -1){
                         borrow = mod3->borrows[index];
                         system("cls");
                         if(borrow.fine==0){
                             printf("Nenhuma multa para este emprestimo\n");
                         }else{
-                            int fine = payFine(mod3,borrow,index);
+                            int fine = PayFine(mod3,borrow,index);
                             user.fine -= fine;
-                            updateUser(mod2,user,indexUser);
+                            UpdateUser(mod2,user,indexUser);
                         }
                     }else{
                         system("cls");

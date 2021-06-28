@@ -29,30 +29,30 @@ typedef struct library{
 }TModuleBook;
 
 /* Faz a leitura dos dados para cadastro ou alteração dos dados do livro*/
-int readBook(TBook *book);
+int ReadBook(TBook *book);
 
 /* Restrição do numero de livros 10% */
-int restriction(TBook book);
+int Restriction(TBook book);
 
 /* Função para imprimir os dados do livro */
-int printBook(TBook book);
+int PrintBook(TBook book);
 
 /* Função para inserir um livro no modulo de livros */
-int insertBook(TModuleBook *mod1, TBook book);
+int InsertBook(TModuleBook *mod1, TBook book);
 
 /* Função para inicializar o modulo de livros */
-int startBook(TModuleBook *mod1);
+int StartBook(TModuleBook *mod1);
 
 /* Função para imprimir todos os livros cadastrados */
-int printAllBooks(TModuleBook mod1);
+int PrintAllBooks(TModuleBook mod1);
 
 /* Função para buscar um livro pelo titulo */
-int searchBook(TModuleBook mod1,TBook book);
+int SearchBook(TModuleBook mod1,TBook book);
 
 /* Função para atualizar um livro no modulo recebendo os dados e o indice do livro */
-int updateBook(TModuleBook *mod1,TBook book,int index);
+int UpdateBook(TModuleBook *mod1,TBook book,int index);
 
 /* Função para excluir um livro no modulo de livros */
-int deleteBook(TModuleBook *mod1,int index);
+int DeleteBook(TModuleBook *mod1,int index);
 
 #endif 

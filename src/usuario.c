@@ -2,7 +2,7 @@
 
 
 
-int readUser(TUser *user){
+int ReadUser(TUser *user){
     
     printf("Digite o cpf do usuario(xxx.xxx.xxx-xx)\n\t");
     fflush(stdin);
@@ -17,7 +17,7 @@ int readUser(TUser *user){
     fflush(stdin);
     fgets(user->rg,15,stdin);
     printf("Digite a seguir a data de nascimento do usuario\n");
-    readDate(&(user->birthDate));
+    ReadDate(&(user->birthDate));
     printf("Digite a seguir o endereco do usuario\n\t");
     printf("Logradouro:\n\t");
     fflush(stdin);
@@ -68,7 +68,7 @@ int readUser(TUser *user){
     return 1;
 };
 
-int printUser(TUser user){
+int PrintUser(TUser user){
     switch (user.userType)
     {
     case 0:
@@ -93,7 +93,7 @@ int printUser(TUser user){
     printf("cpf:\n\t%s",user.cpf);
     printf("identidade:\n\t%s",user.rg);
     printf("Data de nascimento\n\t");
-    printDate(user.birthDate);
+    PrintDate(user.birthDate);
     printf("Endereco:\n");
     printf("\tLogradouro:\n\t\t%s",user.address.address);
     printf("\tNumero:\n\t\t%d\n",user.address.number);
@@ -104,10 +104,10 @@ int printUser(TUser user){
     printf("Multa:\n\t%d\n",user.fine);
 }
 
-int insertUser(TModuleUser *mod2,TUser user){
+int InsertUser(TModuleUser *mod2,TUser user){
     if(mod2->index < 100){
         mod2->users[mod2->index] = user;
-        printUser(mod2->users[mod2->index]);
+        PrintUser(mod2->users[mod2->index]);
         mod2->index++;
         printf("Usuario cadastrado com sucesso!\n");
         return 1;
@@ -119,40 +119,40 @@ int insertUser(TModuleUser *mod2,TUser user){
 }
 
 
-int startUser(TModuleUser *mod2){
+int StartUser(TModuleUser *mod2){
     mod2->index = 0;
     return 1;
 }
 
-int printAllUsers(TModuleUser mod2){
+int PrintAllUsers(TModuleUser mod2){
     if(mod2.index == 0){
         printf("Nenhum Usuario encontrado\n");
         return 0;
     }
     for(int i=0; i<mod2.index; i++){
-        printUser(mod2.users[i]);
+        PrintUser(mod2.users[i]);
     }
     return 1;
 }
 
-int searchUser(TModuleUser mod2,TUser user){
+int SearchUser(TModuleUser mod2,TUser user){
     for(int i=0; i<mod2.index; i++){
         if(strcmp(user.cpf,mod2.users[i].cpf) == 0){
             printf("Este usuario foi encontrado : \n");
-            printUser(mod2.users[i]);
+            PrintUser(mod2.users[i]);
             return i;
         }
     }
     return -1;
 }
 
-int updateUser(TModuleUser *mod2,TUser user,int index){
+int UpdateUser(TModuleUser *mod2,TUser user,int index){
     mod2->users[index]=user;
     printf("Usuario alterado com sucesso\n");
     return 1;
 }
 
-int deleteUser(TModuleUser *mod2,int index){
+int DeleteUser(TModuleUser *mod2,int index){
     for (int i = index; i < mod2->index; i++){
         mod2->users[i] = mod2->users[i+1];
     }
@@ -161,7 +161,7 @@ int deleteUser(TModuleUser *mod2,int index){
     return 1;
 }
 
-int checkUser(TUser user){
+int CheckUser(TUser user){
     if(user.fine==0){
         switch (user.userType){
         case 0:

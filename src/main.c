@@ -4,31 +4,31 @@ int main(){
     //testes
     TBook book;
     TModuleBook mod1;
-    startBook(&mod1);
+    StartBook(&mod1);
     TUser user;
     TModuleUser mod2;
-    startUser(&mod2);
+    StartUser(&mod2);
     TBorrow borrow;
     TModuleBorrow mod3;
-    startBorrow(&mod3);
+    StartBorrow(&mod3);
 
     int op;
     do{
         system("cls");
-        menuText1();
+        MenuText1();
         fflush(stdin);
         scanf("%d",&op);        
         switch (op){
         case 1:
-            moduleBook(&mod1,book);
+            ModuleBook(&mod1,book);
             break;
 
         case 2:
-            moduleUser(&mod2,user);
+            ModuleUser(&mod2,user);
             break;
 
         case 3:
-            moduleBorrow(&mod3,borrow,&mod2,user,&mod1,book);
+            ModuleBorrow(&mod3,borrow,&mod2,user,&mod1,book);
             break;
         case 0:
             system("cls");

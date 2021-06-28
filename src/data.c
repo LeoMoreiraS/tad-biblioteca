@@ -1,6 +1,6 @@
 #include "..\headers\data.h"
 
-void readDate(TDate *date){
+void ReadDate(TDate *date){
 
     printf("\tDigite o dia\n\t");
     int toggle=0;
@@ -32,7 +32,7 @@ void readDate(TDate *date){
     
 
 }
-void printDate(TDate date){
+void PrintDate(TDate date){
     if(date.day>=10 && date.month>=10){
         printf("%d/%d/%d\n",date.day,date.month,date.year);
     }else if(date.day<10&&date.month<10){
@@ -44,7 +44,7 @@ void printDate(TDate date){
     }
 }
 
-void dateOfReturn(TDate borrowDate, TDate *returnDate){
+void DateOfReturn(TDate borrowDate, TDate *returnDate){
 
     if(borrowDate.day<=14){
         returnDate->day = borrowDate.day+14;
@@ -89,7 +89,7 @@ void dateOfReturn(TDate borrowDate, TDate *returnDate){
                 return;
             }
         }else{//calcula data em fevereiro
-            if(leapYearCalc(borrowDate)){
+            if(LeapYearCalc(borrowDate)){
                 if((borrowDate.day + 14) > 29){
                     returnDate->day = (borrowDate.day + 14) - 29;
                     returnDate->month = borrowDate.month + 1;
@@ -119,7 +119,7 @@ void dateOfReturn(TDate borrowDate, TDate *returnDate){
     }
 }
 
-int leapYearCalc(TDate date){
+int LeapYearCalc(TDate date){
     if(date.year%4==0){
         if(date.year%100 == 0){
             if(date.year%400 == 0){
@@ -135,7 +135,7 @@ int leapYearCalc(TDate date){
     }
 }
 
-int fineCalc(TDate returnDate,TDate deliveryDate){
+int FineCalc(TDate returnDate,TDate deliveryDate){
     int fine = 0;
     if(returnDate.year==deliveryDate.year){
         if(returnDate.month==deliveryDate.month){//mesmo ano e mes
@@ -155,7 +155,7 @@ int fineCalc(TDate returnDate,TDate deliveryDate){
                             fine += (30 - returnDate.day)*2;
                             monthIterator++;
                         }else{//multa fevereiro
-                            if(leapYearCalc(returnDate)){
+                            if(LeapYearCalc(returnDate)){
                                 fine += (29 - returnDate.day)*2;
                                 monthIterator++;
                             }else{
@@ -172,7 +172,7 @@ int fineCalc(TDate returnDate,TDate deliveryDate){
                             fine += (30)*2;
                             monthIterator++;
                         }else{
-                            if(leapYearCalc(returnDate)){
+                            if(LeapYearCalc(returnDate)){
                                 fine += (29)*2;
                                 monthIterator++;
                             }else{
@@ -212,7 +212,7 @@ int fineCalc(TDate returnDate,TDate deliveryDate){
                         fine += (30 - returnDate.day)*2;
                         monthIterator++;
                     }else{//fevereiro
-                            if(leapYearCalc(returnDate)){//ano bissexto
+                            if(LeapYearCalc(returnDate)){//ano bissexto
                                 fine += (29 - returnDate.day)*2;
                                 monthIterator++;
                             }else{
@@ -232,7 +232,7 @@ int fineCalc(TDate returnDate,TDate deliveryDate){
                         fine += 30*2;
                         monthIterator++;
                     }else{//fevereiro
-                            if(leapYearCalc(returnDate)){//ano bissexto
+                            if(LeapYearCalc(returnDate)){//ano bissexto
                                 fine += 29*2;
                                 monthIterator++;
                             }else{
@@ -253,7 +253,7 @@ int fineCalc(TDate returnDate,TDate deliveryDate){
                             fine += (30)*2;
                             monthIterator++;
                         }else{
-                            if(leapYearCalc(returnDate)){
+                            if(LeapYearCalc(returnDate)){
                                 fine += (29)*2;
                                 monthIterator++;
                             }else{
@@ -270,7 +270,7 @@ int fineCalc(TDate returnDate,TDate deliveryDate){
     }
 }
 
-int dateCmp(TDate date1,TDate date2){
+int DateCmp(TDate date1,TDate date2){
     if(date1.year==date2.year&&date1.month==date2.month&&date1.day==date2.day){
         return 1;
     }
